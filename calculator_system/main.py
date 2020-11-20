@@ -1,6 +1,6 @@
 import boto3
-import calc_test
-from calc import add, subtract, divide, multiply
+from calculator_system import calc_test
+from calculator_system.calc import add, subtract, divide, multiply
 
 sns = boto3.client('sns')
 

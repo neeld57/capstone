@@ -1,5 +1,4 @@
-import pytest
-from calc import add, subtract, divide, multiply
+from calculator_system.calc import add, subtract, divide, multiply
 
 def test_add_1():
     event = {}

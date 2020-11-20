@@ -1,0 +1,22 @@
+language: python
+python:
+- "3.8"
+script:
+- python -m pip install --upgrade pip
+- pip install -r requirements.txt -t ./
+- chmod -R 755 .
+- python3 piazza_test.py
+- zip -r ../function.zip .
+- zip -g ../function.zip lambda_function.py
+- zip -g ../function.zip piazza_function.py
+- zip -g ../function.zip piazza_test.py
+- cd ..
+deploy:
+  provider: lambda
+  function_name: "slackbot"
+  region: "us-east-1"
+  runtime: "python3.8"
+  role: "encrypted string"
+  handler_name: "lambda_handler"
+  module_name: "lambda_function"
+  zip: "function.zip"
